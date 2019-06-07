@@ -1,0 +1,2 @@
+class SnowReportsController < ApplicationController
+end

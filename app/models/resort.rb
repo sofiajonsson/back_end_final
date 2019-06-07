@@ -1,0 +1,2 @@
+class Resort < ApplicationRecord
+end

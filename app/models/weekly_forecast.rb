@@ -1,0 +1,2 @@
+class WeeklyForecast < ApplicationRecord
+end
