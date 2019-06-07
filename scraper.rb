@@ -88,46 +88,54 @@ def forecast_scraper
 		pagination_forecast_listings = pagination_parsed_page.css('div.panel-body.middle-padding')
 
 		pagination_forecast_listings.each do |res|
-			forecast= {
-					title: res.css('.h3').children[1].inner_text.strip,
-					# table_data: res.css('.info-table').inner_text,
-					:today =>
-						{
-							at_base: res.css('.col-xs-12').children[1].children[3].children[1].children[5].text.strip,
-							on_mountain: res.css('.col-xs-12').children[1].children[3].children[1].children[3].text.strip
-						},
-					:tomorrow =>
-						{
-							at_base: res.css('.col-xs-12').children[1].children[3].children[3].children[5].text.strip,
-							on_mountain: res.css('.col-xs-12').children[1].children[3].children[3].children[3].text.strip
-						},
-					:day3 =>
-						{
-							at_base: res.css('.col-xs-12').children[1].children[3].children[5].children[5].text.strip,
-							on_mountain: res.css('.col-xs-12').children[1].children[3].children[5].children[3].text.strip
-						},
-					:day4 =>
-						{
-							at_base: res.css('.col-xs-12').children[1].children[3].children[7].children[5].text.strip,
-							on_mountain: res.css('.col-xs-12').children[1].children[3].children[7].children[3].text.strip
-						},
-					:day5 =>
-						{
-							at_base: res.css('.col-xs-12').children[1].children[3].children[9].children[5].text.strip,
-							on_mountain: res.css('.col-xs-12').children[1].children[3].children[9].children[3].text.strip
-						},
-					:day6 =>
-						{
-							at_base: res.css('.col-xs-12').children[1].children[3].children[11].children[5].text.strip,
-							on_mountain: res.css('.col-xs-12').children[1].children[3].children[11].children[3].text.strip
-						},
-					:day7 =>
-						{
-							at_base: res.css('.col-xs-12').children[1].children[3].children[13].children[5].text.strip,
-							on_mountain: res.css('.col-xs-12').children[1].children[3].children[13].children[3].text.strip
-						}
+			@title = res.css('.h3').children[1].inner_text.strip
+			@today_at_base= res.css('.col-xs-12').children[1].children[3].children[1].children[5].text.strip,
+			@today_on_mountain = res.css('.col-xs-12').children[1].children[3].children[1].children[3].text.strip
+
+			@tomorrow_at_base= res.css('.col-xs-12').children[1].children[3].children[3].children[5].text.strip,
+			@tomorrow_on_mountain: res.css('.col-xs-12').children[1].children[3].children[3].children[3].text.strip
+
+			@day3_at_base= res.css('.col-xs-12').children[1].children[3].children[5].children[5].text.strip,
+			@day3_on_mountain= res.css('.col-xs-12').children[1].children[3].children[5].children[3].text.strip
+
+			@day4_at_base= res.css('.col-xs-12').children[1].children[3].children[7].children[5].text.strip,
+			@day4_on_mountain: res.css('.col-xs-12').children[1].children[3].children[7].children[3].text.strip
+
+			@day5_at_base: res.css('.col-xs-12').children[1].children[3].children[9].children[5].text.strip,
+			@day5_on_mountain: res.css('.col-xs-12').children[1].children[3].children[9].children[3].text.strip
+
+			@day6_at_base: res.css('.col-xs-12').children[1].children[3].children[11].children[5].text.strip,
+			@day6_on_mountain: res.css('.col-xs-12').children[1].children[3].children[11].children[3].text.strip
 				}
-			forecasts << forecast
+			@day7_at_base: res.css('.col-xs-12').children[1].children[3].children[13].children[5].text.strip,
+			@day7_on_mountain: res.css('.col-xs-12').children[1].children[3].children[13].children[3].text.strip
+				}
+				#WeeklyForecast.destroy_all
+				forecast = WeeklyForecast.new(
+					title: @title,
+					today_at_base: @today_at_base,
+					today_on_mountain: @today_on_mountain,
+
+					tomorrow_at_base: @tomorrow_at_base,
+					tomorrow_on_mountain: @tomorrow_on_mountain,
+
+					day3_at_base: @day3_at_base,
+					day3_on_mountain: @day3_on_mountain,
+
+					day4_at_base: @day4_at_base,
+					day4_on_mountain: @day4_on_mountain,
+
+					day5_at_base: @day5_at_base,
+					day5_on_mountain: @day5_on_mountain,
+
+					day6_at_base: @day6_at_base,
+					day6_on_mountain: @day6_on_mountain,
+
+					day7_at_base: @day7_at_base
+					day7_on_mountain: @day7_on_mountain
+				)
+				# byebug
+			forecast.save
 
 			puts "Added Forecast For#{forecast[:title]}"
 			puts ""
@@ -158,17 +166,19 @@ def resort_scraper
 		pagination_resort_listings = pagination_parsed_page.css('div.panel-body.middle-padding')
 
 		pagination_resort_listings.each do |res|
-			resort= {}
-					res.css('.h3') ? resort[:title] = res.css('.h3').children[1].inner_text.strip : resort[:title] = ''
-					res.css('.resort-list-item-img-wrap') ? resort[:img] = res.css('.resort-list-item-img-wrap').children[1].children[1].children[1].values[1].strip : resort[:img] = ''
-					res.css('.info-table').children[1].children[2] ? resort[:elevation_gain] = res.css('.info-table').children[1].children[2].children[3].inner_text.strip : resort[:elevation_gain] = ''
-					res.css('.info-table').children[1].children[4] ? resort[:skiiable_terrain] = res.css('.info-table').children[1].children[4].children[3].children[0].inner_text.strip : resort[:skiiable_terrain] = ''
-					res.css('.info-table').children[1].children[4] ? resort[:beginner] = res.css('.info-table').children[1].children[4].children[3].inner_text.strip : resort[:beginner] = ''
-					res.css('.info-table').children[1].children[4] ? resort[:intermediate] = res.css('.info-table').children[1].children[4].children[3].inner_text.strip : resort[:intermediate] = ''
-					res.css('.info-table').children[1].children[4] ? resort[:expert] = res.css('.info-table').children[1].children[4].children[3].inner_text.strip : resort[:expert] = ''
-					res.css('.info-table').children[1].children[6] ? resort[:total_lifts] = res.css('.info-table').children[1].children[6].inner_text.strip : resort[:total_lifts] = ''
-					res.css('.info-table').children[1].children[8] ? resort[:ticket_price] = res.css('.info-table').children[1].children[8].children[3].text.strip : resort[:ticket_price] = ''
-			resorts << resort
+			resort ={}
+			new_resort= Resort.new(
+					title: res.css('.h3') ? resort[:title] = res.css('.h3').children[1].inner_text.strip : resort[:title] = '',
+					img: res.css('.resort-list-item-img-wrap') ? resort[:img] = res.css('.resort-list-item-img-wrap').children[1].children[1].children[1].values[1].strip : resort[:img] = '',
+					elevation_gain: res.css('.info-table').children[1].children[2] ? resort[:elevation_gain] = res.css('.info-table').children[1].children[2].children[3].inner_text.strip : resort[:elevation_gain] = '',
+					skiiable_terrain: res.css('.info-table').children[1].children[4] ? resort[:skiiable_terrain] = res.css('.info-table').children[1].children[4].children[3].children[0].inner_text.strip : resort[:skiiable_terrain] = '',
+					beginner: res.css('.info-table').children[1].children[4] ? resort[:beginner] = res.css('.info-table').children[1].children[4].children[3].inner_text.strip : resort[:beginner] = '',
+					intermediate: res.css('.info-table').children[1].children[4] ? resort[:intermediate] = res.css('.info-table').children[1].children[4].children[3].inner_text.strip : resort[:intermediate] = '',
+					expert: res.css('.info-table').children[1].children[4] ? resort[:expert] = res.css('.info-table').children[1].children[4].children[3].inner_text.strip : resort[:expert] = '',
+					total_lifts: res.css('.info-table').children[1].children[6] ? resort[:total_lifts] = res.css('.info-table').children[1].children[6].inner_text.strip : resort[:total_lifts] = '',
+					ticket_price:res.css('.info-table').children[1].children[8] ? resort[:ticket_price] = res.css('.info-table').children[1].children[8].children[3].text.strip : resort[:ticket_price] = '',
+			)
+			new_resort.save
 
 			puts "Added Resort#{resort[:title]} "
 			puts ""
@@ -179,6 +189,6 @@ def resort_scraper
 end
 
 #Calling methods
-snow_scraper
-# forecast_scraper
-# resort_scraper
+#snow_scraper
+ forecast_scraper
+#resort_scraper
