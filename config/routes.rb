@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :favorites
   resources :user_names
   resources :weekly_forecasts

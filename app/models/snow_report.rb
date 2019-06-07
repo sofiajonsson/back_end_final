@@ -1,3 +1,4 @@
 class SnowReport < ApplicationRecord
-	puts "hello"
+	has_many :favorites
+	has_many :users, through: :favorites
 end
