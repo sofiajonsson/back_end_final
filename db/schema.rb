@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_185133) do
+ActiveRecord::Schema.define(version: 2019_06_07_193749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,15 +74,20 @@ ActiveRecord::Schema.define(version: 2019_06_06_185133) do
 
   create_table "weekly_forecasts", force: :cascade do |t|
     t.string "title"
-    t.string "today"
-    t.string "tomorrow"
-    t.string "day3"
-    t.string "day4"
-    t.string "day5"
-    t.string "day6"
-    t.string "day7"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "today_at_base"
+    t.string "today_on_mountain"
+    t.string "tomorrow_at_base"
+    t.string "tomorrow_on_mountain"
+    t.string "day3_at_base"
+    t.string "day3_on_mountain"
+    t.string "day4_at_base"
+    t.string "day4_on_mountain"
+    t.string "day5_at_base"
+    t.string "day5_on_mountain"
+    t.string "day6_at_base"
+    t.string "day6_on_mountain"
+    t.string "day7_at_base"
+    t.string "day7_on_mountain"
   end
 
 end

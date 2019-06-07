@@ -89,27 +89,27 @@ def forecast_scraper
 
 		pagination_forecast_listings.each do |res|
 			@title = res.css('.h3').children[1].inner_text.strip
-			@today_at_base= res.css('.col-xs-12').children[1].children[3].children[1].children[5].text.strip,
+			@today_at_base = res.css('.col-xs-12').children[1].children[3].children[1].children[5].text.strip
 			@today_on_mountain = res.css('.col-xs-12').children[1].children[3].children[1].children[3].text.strip
 
-			@tomorrow_at_base= res.css('.col-xs-12').children[1].children[3].children[3].children[5].text.strip,
-			@tomorrow_on_mountain: res.css('.col-xs-12').children[1].children[3].children[3].children[3].text.strip
+			@tomorrow_at_base = res.css('.col-xs-12').children[1].children[3].children[3].children[5].text.strip
+			@tomorrow_on_mountain = res.css('.col-xs-12').children[1].children[3].children[3].children[3].text.strip
 
-			@day3_at_base= res.css('.col-xs-12').children[1].children[3].children[5].children[5].text.strip,
-			@day3_on_mountain= res.css('.col-xs-12').children[1].children[3].children[5].children[3].text.strip
+			@day3_at_base = res.css('.col-xs-12').children[1].children[3].children[5].children[5].text.strip
+			@day3_on_mountain = res.css('.col-xs-12').children[1].children[3].children[5].children[3].text.strip
 
-			@day4_at_base= res.css('.col-xs-12').children[1].children[3].children[7].children[5].text.strip,
-			@day4_on_mountain: res.css('.col-xs-12').children[1].children[3].children[7].children[3].text.strip
+			@day4_at_base = res.css('.col-xs-12').children[1].children[3].children[7].children[5].text.strip
+			@day4_on_mountain = res.css('.col-xs-12').children[1].children[3].children[7].children[3].text.strip
 
-			@day5_at_base: res.css('.col-xs-12').children[1].children[3].children[9].children[5].text.strip,
-			@day5_on_mountain: res.css('.col-xs-12').children[1].children[3].children[9].children[3].text.strip
+			@day5_at_base = res.css('.col-xs-12').children[1].children[3].children[9].children[5].text.strip
+			@day5_on_mountain = res.css('.col-xs-12').children[1].children[3].children[9].children[3].text.strip
 
-			@day6_at_base: res.css('.col-xs-12').children[1].children[3].children[11].children[5].text.strip,
-			@day6_on_mountain: res.css('.col-xs-12').children[1].children[3].children[11].children[3].text.strip
-				}
-			@day7_at_base: res.css('.col-xs-12').children[1].children[3].children[13].children[5].text.strip,
-			@day7_on_mountain: res.css('.col-xs-12').children[1].children[3].children[13].children[3].text.strip
-				}
+			@day6_at_base = res.css('.col-xs-12').children[1].children[3].children[11].children[5].text.strip
+			@day6_on_mountain = res.css('.col-xs-12').children[1].children[3].children[11].children[3].text.strip
+
+			@day7_at_base = res.css('.col-xs-12').children[1].children[3].children[13].children[5].text.strip
+			@day7_on_mountain = res.css('.col-xs-12').children[1].children[3].children[13].children[3].text.strip
+
 				#WeeklyForecast.destroy_all
 				forecast = WeeklyForecast.new(
 					title: @title,
@@ -131,7 +131,7 @@ def forecast_scraper
 					day6_at_base: @day6_at_base,
 					day6_on_mountain: @day6_on_mountain,
 
-					day7_at_base: @day7_at_base
+					day7_at_base: @day7_at_base,
 					day7_on_mountain: @day7_on_mountain
 				)
 				# byebug
@@ -189,6 +189,6 @@ def resort_scraper
 end
 
 #Calling methods
-#snow_scraper
- forecast_scraper
-#resort_scraper
+snow_scraper
+forecast_scraper
+resort_scraper

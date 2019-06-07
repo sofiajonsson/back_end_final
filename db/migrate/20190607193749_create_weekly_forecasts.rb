@@ -1,6 +1,6 @@
 class CreateWeeklyForecasts < ActiveRecord::Migration[5.2]
   def change
-    create_table :weekly_forecasts do |t|
+      create_table :weekly_forecasts do |t|
       t.string :title
       t.string :today_at_base
       t.string :today_on_mountain
@@ -16,8 +16,6 @@ class CreateWeeklyForecasts < ActiveRecord::Migration[5.2]
       t.string :day6_on_mountain
       t.string :day7_at_base
       t.string :day7_on_mountain
-
-      t.timestamps
     end
   end
 end
