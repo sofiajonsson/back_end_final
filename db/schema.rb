@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_203324) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "weekly_forecast_id"
-    t.integer "snowreport_id"
+    t.integer "snow_report_id"
     t.integer "resorts_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
