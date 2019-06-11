@@ -2,6 +2,13 @@ class CreateWeeklyForecasts < ActiveRecord::Migration[5.2]
   def change
       create_table :weekly_forecasts do |t|
       t.string :title
+      t.string :today_icon
+      t.string :tomorrow_icon
+      t.string :day3_icon
+      t.string :day4_icon
+      t.string :day5_icon
+      t.string :day6_icon
+      t.string :day7_icon
       t.string :today_at_base
       t.string :today_on_mountain
       t.string :tomorrow_at_base

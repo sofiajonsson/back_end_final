@@ -89,6 +89,16 @@ def forecast_scraper
 
 		pagination_forecast_listings.each do |res|
 			@title = res.css('.h3').children[1].inner_text.strip
+
+			@today_icon = res.css('.no-mobile-weatherdetail').children[1].children[1].children[3].children[3].children[1].attributes['src'].value
+			@tomorrow_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[5].children[3].children[1].attributes['src'].value
+			@day3_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[7].children[3].children[1].attributes['src'].value
+			@day4_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[9].children[3].children[1].attributes['src'].value
+			@day5_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[11].children[3].children[1].attributes['src'].value
+			@day6_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[13].children[3].children[1].attributes['src'].value
+			@day7_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[15].children[3].children[1].attributes['src'].value
+
+
 			@today_at_base = res.css('.col-xs-12').children[1].children[3].children[1].children[5].text.strip
 			@today_on_mountain = res.css('.col-xs-12').children[1].children[3].children[1].children[3].text.strip
 
@@ -113,6 +123,15 @@ def forecast_scraper
 				#WeeklyForecast.destroy_all
 				forecast = WeeklyForecast.new(
 					title: @title,
+
+					today_icon: @today_icon,
+					tomorrow_icon: @tomorrow_icon,
+					day3_icon: @day3_icon,
+					day4_icon: @day4_icon,
+					day5_icon: @day5_icon,
+					day6_icon: @day6_icon,
+					day7_icon: @day7_icon,
+
 					today_at_base: @today_at_base,
 					today_on_mountain: @today_on_mountain,
 
@@ -134,7 +153,7 @@ def forecast_scraper
 					day7_at_base: @day7_at_base,
 					day7_on_mountain: @day7_on_mountain
 				)
-				# byebug
+				 # byebug
 			forecast.save
 
 			puts "Added Forecast For#{forecast[:title]}"
@@ -187,7 +206,6 @@ def resort_scraper
 		end
 		puts "-----------------------------------------------------------------------------------------------------------------------------"
 end
-
 #Calling methods
 snow_scraper
 forecast_scraper

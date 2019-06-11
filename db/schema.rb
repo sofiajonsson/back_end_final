@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_203324) do
     t.integer "user_id"
     t.integer "weekly_forecast_id"
     t.integer "snow_report_id"
-    t.integer "resorts_id"
+    t.integer "resort_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,6 +75,13 @@ ActiveRecord::Schema.define(version: 2019_06_07_203324) do
 
   create_table "weekly_forecasts", force: :cascade do |t|
     t.string "title"
+    t.string "today_icon"
+    t.string "tomorrow_icon"
+    t.string "day3_icon"
+    t.string "day4_icon"
+    t.string "day5_icon"
+    t.string "day6_icon"
+    t.string "day7_icon"
     t.string "today_at_base"
     t.string "today_on_mountain"
     t.string "tomorrow_at_base"
