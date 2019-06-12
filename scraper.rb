@@ -91,12 +91,12 @@ def forecast_scraper
 			@title = res.css('.h3').children[1].inner_text.strip
 
 			@today_icon = res.css('.no-mobile-weatherdetail').children[1].children[1].children[3].children[3].children[1].attributes['src'].value
-			@tomorrow_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[5].children[3].children[1].attributes['src'].value
-			@day3_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[7].children[3].children[1].attributes['src'].value
-			@day4_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[9].children[3].children[1].attributes['src'].value
-			@day5_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[11].children[3].children[1].attributes['src'].value
-			@day6_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[13].children[3].children[1].attributes['src'].value
-			@day7_icon= res.css('.no-mobile-weatherdetail').children[1].children[1].children[15].children[3].children[1].attributes['src'].value
+			@tomorrow_icon = res.css('.no-mobile-weatherdetail').children[1].children[1].children[5].children[3].children[1].attributes['src'].value
+			@day3_icon = res.css('.no-mobile-weatherdetail').children[1].children[1].children[7].children[3].children[1].attributes['src'].value
+			@day4_icon = res.css('.no-mobile-weatherdetail').children[1].children[1].children[9].children[3].children[1].attributes['src'].value
+			@day5_icon = res.css('.no-mobile-weatherdetail').children[1].children[1].children[11].children[3].children[1].attributes['src'].value
+			@day6_icon = res.css('.no-mobile-weatherdetail').children[1].children[1].children[13].children[3].children[1].attributes['src'].value
+			@day7_icon = res.css('.no-mobile-weatherdetail').children[1].children[1].children[15].children[3].children[1].attributes['src'].value
 
 
 			@today_at_base = res.css('.col-xs-12').children[1].children[3].children[1].children[5].text.strip
@@ -153,9 +153,9 @@ def forecast_scraper
 					day7_at_base: @day7_at_base,
 					day7_on_mountain: @day7_on_mountain
 				)
-				 # byebug
-			forecast.save
 
+			forecast.save
+ byebug
 			puts "Added Forecast For#{forecast[:title]}"
 			puts ""
 		end
@@ -207,6 +207,6 @@ def resort_scraper
 		puts "-----------------------------------------------------------------------------------------------------------------------------"
 end
 #Calling methods
-snow_scraper
+# snow_scraper
 forecast_scraper
-resort_scraper
+# resort_scraper
