@@ -6,5 +6,5 @@ class UserSerializer < ActiveModel::Serializer
 	# has_many :weekly_forecasts, through: :favorites
 	# has_many :resorts, through: :favorites
   #
-  # attributes :id, :name, :email, :password_digest, :home_country
+ attributes :id, :name, :email, :password_digest, :home_country
 end
