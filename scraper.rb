@@ -190,9 +190,9 @@ def resort_scraper
 					img: res.css('.resort-list-item-img-wrap') ? resort[:img] = res.css('.resort-list-item-img-wrap').children[1].children[1].children[1].values[1].strip : resort[:img] = '',
 					elevation_gain: res.css('.info-table').children[1].children[2] ? resort[:elevation_gain] = res.css('.info-table').children[1].children[2].children[3].inner_text.strip : resort[:elevation_gain] = '',
 					skiiable_terrain: res.css('.info-table').children[1].children[4] ? resort[:skiiable_terrain] = res.css('.info-table').children[1].children[4].children[3].children[0].inner_text.strip : resort[:skiiable_terrain] = '',
-					beginner: res.css('.info-table').children[1].children[4] ? resort[:beginner] = res.css('.info-table').children[1].children[4].children[3].children[0].inner_text.strip : resort[:beginner] = '',
-					intermediate: res.css('.info-table').children[1].children[4] ? resort[:intermediate] = res.css('.info-table').children[1].children[4].children[3].children[2].inner_text.strip : resort[:intermediate] = '',
-					expert: res.css('.info-table').children[1].children[4] ? resort[:expert] = res.css('.info-table').children[1].children[4].children[3].children[4].inner_text.strip : resort[:expert] = '',
+					beginner: res.css('.info-table').children[1].children[4] ? resort[:beginner] = res.css('.info-table').children[1].children[4].children[3].children[2].inner_text.strip : resort[:beginner] = '',
+					intermediate: res.css('.info-table').children[1].children[4] ? resort[:intermediate] = res.css('.info-table').children[1].children[4].children[3].children[4].inner_text.strip : resort[:intermediate] = '',
+					expert: res.css('.info-table').children[1].children[4] ? resort[:expert] = res.css('.info-table').children[1].children[4].children[3].children[6].inner_text.strip : resort[:expert] = '',
 					total_lifts: res.css('.info-table').children[1].children[6] ? resort[:total_lifts] = res.css('.info-table').children[1].children[6].inner_text.strip : resort[:total_lifts] = '',
 					ticket_price:res.css('.info-table').children[1].children[8] ? resort[:ticket_price] = res.css('.info-table').children[1].children[8].children[3].text.strip : resort[:ticket_price] = '',
 			)
