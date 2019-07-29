@@ -10,7 +10,8 @@ This app was created for the avid skiier, or ski vacationer to check out North A
 - Run `bundle install`
 - Run `rails s` in your server to start your local server
 - Open `http://localhost:3000/resorts` in your browser to verify backend data is present
-- Move on to clone and open front_end_final
+- Move on to clone and open [`front_end_final`](
+https://github.com/sofiajonsson/front_end_final)
   - Run `bundle install`
   - Run `npm start`
 
