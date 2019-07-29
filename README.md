@@ -24,13 +24,13 @@ Please click on image to access YouTube video:
 
 2. JavaScript and React frontend 
 
-3. API from scraped data off of:
+3. API created from scraped data off of:
   https://www.skiresort.info/weather/north-america/
   https://www.skiresort.info/snow-reports/north-america/
   https://www.skiresort.info/ski-resorts/north-america/
 
 ## Database Diagram
 
-![alt text](lib/art/models_pow_tracker.png)
+![alt text](lib/art/final_model.png)
 
 
